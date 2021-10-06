@@ -1,0 +1,20 @@
+<Project Sdk="MSBuild.Sdk.SqlProj/1.17.0">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <SqlServerVersion>Sql140</SqlServerVersion>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../ExternalDB/ExternalDB.Build.csproj"  DatabaseVariableLiteralValue="ExternalDatabase"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SqlCmdVariable Include="ExternalDatabase">
+      <DefaultValue>dev_db</DefaultValue>
+      <Value>$(ExternalDB)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="TargetDatabase.sqlproj" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+</Project>
